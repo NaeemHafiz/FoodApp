@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.afriwark.Adapters.RestaurantAdapter;
 import com.example.afriwark.Interface.ClickListener;
@@ -33,6 +35,8 @@ public class RestaurantFragment extends Fragment implements ClickListener {
     private RecyclerView recyclerView;
     private RestaurantAdapter restaurantAdapter;
     private List<Datum> dataList = new ArrayList<>();
+    private LinearLayout linearLayout;
+    private TextView textView;
 
 
     public RestaurantFragment() {
@@ -49,10 +53,11 @@ public class RestaurantFragment extends Fragment implements ClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_restaurant, container, false);
         Bundle b = getArguments();
         if (b != null)
             dataList = (ArrayList<Datum>) getArguments().getSerializable("valuesArray");
-        return inflater.inflate(R.layout.fragment_restaurant, container, false);
+        return view;
     }
 
     @Override
@@ -61,10 +66,19 @@ public class RestaurantFragment extends Fragment implements ClickListener {
         setHasOptionsMenu(true);
         toolbar = view.findViewById(R.id.toolbarrestaurant);
         recyclerView = view.findViewById(R.id.restaurantrecyclerview);
+        linearLayout = view.findViewById(R.id.setData);
+        textView = view.findViewById(R.id.emptyview);
+        if (dataList.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+            linearLayout.setVisibility(View.GONE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
+            linearLayout.setVisibility(View.VISIBLE);
+        }
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //noinspection ConstantConditions
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         restaurantAdapter = new RestaurantAdapter(dataList, getActivity());
         restaurantAdapter.setClickListener(this);
         recyclerView.setAdapter(restaurantAdapter);

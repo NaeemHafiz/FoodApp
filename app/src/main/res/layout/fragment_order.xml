@@ -5,35 +5,44 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.OrderFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/text1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/hello_blank_fragment"
-        android:textColor="#96222c"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:orientation="vertical">
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/hello_blank_fragment"
+            android:textColor="#96222c"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text1"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="Thank You For Placing Your Order With Us."
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Thank You For Placing Your Order With Us."
+            android:textSize="12sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text3"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="For Any Question and further information. Please Contact Our Customer Support"
-        android:textSize="20sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text3"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="For Any Question and further information. Please Contact Our Customer Support"
+            android:textSize="15sp" />
+    </LinearLayout>
 </RelativeLayout>

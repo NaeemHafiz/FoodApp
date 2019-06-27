@@ -23,7 +23,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.afriwark.UtilityClasses.Tags.USER_EMAIL;
 import static com.example.afriwark.UtilityClasses.Tags.USER_ID;
 
 public class SignupActivity extends AppCompatActivity {

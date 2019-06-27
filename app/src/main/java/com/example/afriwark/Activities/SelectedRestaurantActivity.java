@@ -22,6 +22,8 @@ import com.example.afriwark.UtilityClasses.DBManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.afriwark.UtilityClasses.Tags.USER_ID;
+
 public class SelectedRestaurantActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
@@ -47,13 +49,13 @@ public class SelectedRestaurantActivity extends AppCompatActivity {
                         Toast.makeText(SelectedRestaurantActivity.this, "Restaurants", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.basket:
-                        fragment = new BasketFragment();
-                        loadFragment(fragment);
+                        setIdInFragment();
                         Toast.makeText(SelectedRestaurantActivity.this, "Baskets", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.navigation_logout:
                         logout();
                         Toast.makeText(SelectedRestaurantActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                        finish();
                         break;
                     case R.id.navigation_order:
                         fragment = new OrderFragment();
@@ -94,6 +96,25 @@ public class SelectedRestaurantActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_container, frag, "tag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    private void setIdInFragment() {
+        BasketFragment frag = new BasketFragment();
+        int id = DBManager.getIntPrefs(SelectedRestaurantActivity.this, USER_ID);
+        Bundle b = new Bundle();
+// put stuff into bundle...
+        b.putInt("loginid", id);
+
+// Pass the bundle to the Fragment
+        frag.setArguments(b);
+
+// Use Fragment Transaction
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame_container, frag, "tag");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+
     }
 
 }

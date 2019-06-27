@@ -12,4 +12,5 @@
     <string name="hello_basket_fragment">Basket Fragment</string>
     <string name="deliver">Deliver in 60 minutes</string>
     <string name="burger">Burger</string>
+    <string name="no_data_available">Data Not Found</string>
 </resources>

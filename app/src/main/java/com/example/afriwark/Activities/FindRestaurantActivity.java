@@ -39,6 +39,7 @@ public class FindRestaurantActivity extends AppCompatActivity implements OnMapRe
     private String[] separated;
     private ApiInterface apiInterface;
     private List<Datum> data = new ArrayList<>();
+    private double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,10 @@ public class FindRestaurantActivity extends AppCompatActivity implements OnMapRe
         btnfindrestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                coordinates = editTextsearch.getText().toString();
+                separated = coordinates.split(",");
+                latitude = Double.parseDouble(separated[0]);
+                longitude = Double.parseDouble(separated[1]);
                 if (isValidate())
                     findRestaurant();
             }
@@ -84,6 +89,10 @@ public class FindRestaurantActivity extends AppCompatActivity implements OnMapRe
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                coordinates = editTextsearch.getText().toString();
+                separated = coordinates.split(",");
+                latitude = Double.parseDouble(separated[0]);
+                longitude = Double.parseDouble(separated[1]);
                 if (isValidate())
                     doSearch();
             }
@@ -93,16 +102,14 @@ public class FindRestaurantActivity extends AppCompatActivity implements OnMapRe
     private void findRestaurant() {
         coordinates = editTextsearch.getText().toString();
         separated = coordinates.split(",");
-        double latitude = Double.parseDouble(separated[0]);
-        double longitude = Double.parseDouble(separated[1]);
+        latitude = Double.parseDouble(separated[0]);
+        longitude = Double.parseDouble(separated[1]);
         Call<SearchRestaurant> call = apiInterface.searchRestaurant(latitude, longitude);
         call.enqueue(new Callback<SearchRestaurant>() {
             @Override
             public void onResponse(Call<SearchRestaurant> call, Response<SearchRestaurant> response) {
 
                 data = response.body().getData();
-                Log.d("data1", String.valueOf(data));
-                Log.d("nimraname", data.get(0).getResturantName());
                 Intent intent = new Intent(FindRestaurantActivity.this, SelectedRestaurantActivity.class);
                 intent.putStringArrayListExtra("resdata", (ArrayList) data);
                 startActivity(intent);
@@ -124,11 +131,12 @@ public class FindRestaurantActivity extends AppCompatActivity implements OnMapRe
 
     private boolean isValidate() {
         String search = editTextsearch.getText().toString();
-        if (search.isEmpty()) {
+        if (search.equals("")) {
             editTextsearch.setError("Please Enter Required DataRegister");
             editTextsearch.requestFocus();
             return false;
         }
+
         return true;
     }
 }

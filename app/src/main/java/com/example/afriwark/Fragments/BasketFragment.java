@@ -39,7 +39,6 @@ public class BasketFragment extends Fragment {
     private ApiInterface apiInterface;
     private int loginid;
 
-
     public BasketFragment() {
         // Required empty public constructor
     }

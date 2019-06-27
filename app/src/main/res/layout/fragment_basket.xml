@@ -10,73 +10,74 @@
         android:id="@+id/toolbarbasket"
         layout="@layout/custom_toolbarbasket" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-
-        <EditText
-            android:id="@+id/category_id"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            android:hint="Enter Category id"
-            android:inputType="number"
-            android:padding="10dp" />
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/subcategory_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#fff"
-            android:hint="Enter Sub Category id"
-            android:padding="10dp" />
+            <EditText
+                android:id="@+id/category_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:hint="Enter Category id"
+                android:inputType="number"
+                android:padding="10dp" />
 
-        <EditText
-            android:id="@+id/qty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#fff"
-            android:hint="Enter Quantity"
-            android:inputType="number"
-            android:padding="10dp" />
+            <EditText
+                android:id="@+id/subcategory_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
+                android:hint="Enter Sub Category id"
+                android:padding="10dp" />
 
-        <EditText
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#fff"
-            android:hint="Enter Price"
-            android:inputType="number"
-            android:padding="10dp" />
+            <EditText
+                android:id="@+id/qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
+                android:hint="Enter Quantity"
+                android:inputType="number"
+                android:padding="10dp" />
 
-        <EditText
-            android:id="@+id/total"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#fff"
-            android:hint="Enter Total"
-            android:inputType="number"
-            android:padding="10dp" />
+            <EditText
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
+                android:hint="Enter Price"
+                android:inputType="number"
+                android:padding="10dp" />
 
-        <Button
-            android:id="@+id/btnbasket"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/btn_background"
-            android:inputType="number"
-            android:text="Add To Basket"
-            android:textColor="#fff" />
+            <EditText
+                android:id="@+id/total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
+                android:hint="Enter Total"
+                android:inputType="number"
+                android:padding="10dp" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnbasket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_background"
+                android:inputType="number"
+                android:text="Add To Basket"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

@@ -110,14 +110,12 @@
             android:padding="5dp"
             android:text="59" />
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/textviewlistener"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2">
-
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -133,10 +131,8 @@
             android:layout_weight="0.3"
             android:src="@drawable/right_arrow" />
     </LinearLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#000" />
-
 </LinearLayout>
