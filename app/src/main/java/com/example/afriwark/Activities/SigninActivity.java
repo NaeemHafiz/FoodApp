@@ -11,24 +11,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.afriwark.Models.UserSignInSignUp.Login.UserLogin;
+import com.example.afriwark.R;
 import com.example.afriwark.Remote.ApiClient;
 import com.example.afriwark.Remote.ApiInterface;
 import com.example.afriwark.UtilityClasses.DBManager;
-import com.example.afriwark.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.afriwark.UtilityClasses.Tags.USER_EMAIL;
 import static com.example.afriwark.UtilityClasses.Tags.USER_ID;
 
 public class SigninActivity extends AppCompatActivity {
-    Toolbar toolbar;
-    TextView createclickactivity;
-    EditText edittextemail, edittextpassword;
-    Button btnlogin;
-    ApiInterface apiInterface;
+    private Toolbar toolbar;
+    private TextView createclickactivity;
+    private EditText edittextemail, edittextpassword;
+    private Button btnlogin;
+    private ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
