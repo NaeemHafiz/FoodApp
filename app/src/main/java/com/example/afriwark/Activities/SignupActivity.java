@@ -125,6 +125,7 @@ public class SignupActivity extends AppCompatActivity {
         final String email = edittextemail.getText().toString();
         String password = edittextpassword.getText().toString();
         String cpassword = edittextcpassword.getText().toString();
+        //
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         Call<UserRegister> call = apiInterface.signUp(name, email, password, cpassword);
         call.enqueue(new Callback<UserRegister>() {
