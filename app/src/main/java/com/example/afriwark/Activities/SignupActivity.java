@@ -26,11 +26,11 @@ import retrofit2.Response;
 import static com.example.afriwark.UtilityClasses.Tags.USER_ID;
 
 public class SignupActivity extends AppCompatActivity {
-    Toolbar toolbar;
-    EditText edittextname, edittextemail, edittextpassword, edittextcpassword;
-    Button btnsignup;
+    private Toolbar toolbar;
+    private EditText edittextname, edittextemail, edittextpassword, edittextcpassword;
+    private Button btnsignup;
     private ApiInterface apiInterface;
-    TextView textviewclick;
+    private TextView textviewclick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
