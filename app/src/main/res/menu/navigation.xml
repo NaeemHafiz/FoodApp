@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_restaurant"
+        android:icon="@drawable/restaurant"
+        android:title="@string/title_restaurants" />
+
+    <item
+        android:id="@+id/navigation_order"
+        android:icon="@drawable/order"
+        android:title="@string/title_order" />
+
+    <item
+        android:id="@+id/basket"
+        android:icon="@drawable/basket"
+        android:title="@string/title_basket" />
+    <item
+        android:id="@+id/navigation_logout"
+        android:icon="@drawable/logout"
+        android:title="@string/title_logout" />
+
+
+</menu>

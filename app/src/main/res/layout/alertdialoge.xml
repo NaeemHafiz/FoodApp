@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#898989"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/text_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="YOUR ORDER WILL BE READY \n WITHIN 30 MIN"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btndialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_weight="1"
+        android:text="OK"
+        android:textColor="#fff" />
+</LinearLayout>

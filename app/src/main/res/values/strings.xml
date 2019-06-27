@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Afriwark</string>
+    <string name="title_restaurants">Restaurants</string>
+    <string name="title_order">Orders</string>
+    <string name="title_basket">Basket</string>
+    <string name="title_deal">Deals</string>
+    <string name="title_logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Order Confirmation</string>
+    <string name="hello_restaurant_fragment">146 Restaurants Deliver To you</string>
+    <string name="hello_basket_fragment">Basket Fragment</string>
+    <string name="deliver">Deliver in 60 minutes</string>
+    <string name="burger">Burger</string>
+</resources>
