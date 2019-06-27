@@ -26,12 +26,12 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class CategoryFragment extends Fragment {
-    Toolbar toolbar;
-    TextView textView_restaurant_name, textView_restaurant_address, textView_category_name;
-    String name, country, city;
+    private Toolbar toolbar;
+    private TextView textView_restaurant_name, textView_restaurant_address, textView_category_name;
+    private String name, country, city;
     private ApiInterface apiInterface;
-    int restaurant_id;
-    LinearLayout linearlayout;
+    private int restaurant_id;
+    private LinearLayout linearlayout;
 
 
     public CategoryFragment() {
@@ -83,7 +83,7 @@ public class CategoryFragment extends Fragment {
                             args.putString("res_name", response.body().getData().getResturantName());
                             args.putString("res_country", response.body().getData().getCountry());
                             args.putString("res_city", response.body().getData().getCity());
-                            args.putString("category_name",response.body().getData().getCategoryInfo().get1().getCategoryName());
+                            args.putString("category_name", response.body().getData().getCategoryInfo().get1().getCategoryName());
                             int id = Integer.parseInt(response.body().getData().getCategoryInfo().get1().getCategoryId());
                             args.putInt("cat_id", id);
                             CategoryDetailFragment fragment = new CategoryDetailFragment();
