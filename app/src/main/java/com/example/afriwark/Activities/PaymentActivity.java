@@ -25,8 +25,8 @@ import static com.example.afriwark.UtilityClasses.Tags.USER_ID;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    Button btnpayment, logout;
-    Toolbar toolbar;
+    private Button btnpayment, logout;
+    private Toolbar toolbar;
     private ApiInterface apiInterface;
 
     @Override
