@@ -2,17 +2,7 @@ package com.example.afriwark.Fragments;
 
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -26,6 +16,15 @@ import com.example.afriwark.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,19 +35,19 @@ public class RestaurantFragment extends Fragment implements ClickListener {
     private RestaurantAdapter restaurantAdapter;
     private List<Datum> dataList = new ArrayList<>();
     private LinearLayout linearLayout;
-    private TextView textView;
+    private TextView textView, textview_count_res;
 
 
     public RestaurantFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        setHasOptionsMenu(true);
-        inflater.inflate(R.menu.search_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        setHasOptionsMenu(true);
+//        inflater.inflate(R.menu.search_menu, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,11 +62,11 @@ public class RestaurantFragment extends Fragment implements ClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setHasOptionsMenu(true);
         toolbar = view.findViewById(R.id.toolbarrestaurant);
         recyclerView = view.findViewById(R.id.restaurantrecyclerview);
         linearLayout = view.findViewById(R.id.setData);
         textView = view.findViewById(R.id.emptyview);
+        textview_count_res = view.findViewById(R.id.textview_count_res);
         if (dataList.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             textView.setVisibility(View.VISIBLE);
@@ -76,6 +75,10 @@ public class RestaurantFragment extends Fragment implements ClickListener {
             recyclerView.setVisibility(View.VISIBLE);
             textView.setVisibility(View.GONE);
             linearLayout.setVisibility(View.VISIBLE);
+            if (dataList.size() == 1)
+                textview_count_res.setText(dataList.size() + " " + "Restaurant Deliver To you");
+            else
+                textview_count_res.setText(dataList.size() + " " + "Restaurants Deliver To you");
         }
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);

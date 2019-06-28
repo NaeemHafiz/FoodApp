@@ -115,7 +115,6 @@ public class SelectedRestaurantActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame_container, frag, "tag");
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
