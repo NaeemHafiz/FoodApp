@@ -2,7 +2,7 @@ package com.example.afriwark.Activities;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import com.example.afriwark.UtilityClasses.DBManager;
 import com.example.afriwark.R;
 
-import static com.example.afriwark.UtilityClasses.Tags.USER_EMAIL;
 import static com.example.afriwark.UtilityClasses.Tags.USER_ID;
 
 public class SplashActivity extends AppCompatActivity {

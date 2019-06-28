@@ -2,9 +2,9 @@ package com.example.afriwark.Fragments;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +66,7 @@ public class CategoryDetailFragment extends Fragment {
                     fragment.setArguments(args);
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_container, fragment);
+                    transaction.addToBackStack(null);
                     transaction.commit();
                 }
             });

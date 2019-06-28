@@ -3,11 +3,11 @@ package com.example.afriwark.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.afriwark.Activities.PaymentActivity;
-import com.example.afriwark.Activities.SignupActivity;
 import com.example.afriwark.Models.Cart.AddToCart;
-import com.example.afriwark.Models.CategoryClasses.Category;
 import com.example.afriwark.R;
 import com.example.afriwark.Remote.ApiClient;
 import com.example.afriwark.Remote.ApiInterface;

@@ -2,10 +2,10 @@ package com.example.afriwark.Fragments;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +32,6 @@ public class CategoryFragment extends Fragment {
     private ApiInterface apiInterface;
     private int restaurant_id;
     private LinearLayout linearlayout;
-
 
     public CategoryFragment() {
         // Required empty public constructor
@@ -104,15 +103,10 @@ public class CategoryFragment extends Fragment {
     }
 
     private void changeFragment() {
-//        Bundle args = new Bundle();
-//        args.putString("restaurant_name", data.getResturantName());
-//        args.putString("address_country", data.getResturantName());
-//        args.putString("address_city", data.getCity());
-//        int id = Integer.parseInt(data.getResturantId());
-//        args.putInt("restaurant_id", id);
         CategoryDetailFragment fragment = new CategoryDetailFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 }
