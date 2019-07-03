@@ -118,13 +118,4 @@ public class SelectedRestaurantActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-//            getSupportFragmentManager().popBackStack();
-//        } else {
-//            finish();
-//        }
-//    }
-
 }

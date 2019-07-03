@@ -2,15 +2,17 @@ package com.example.afriwark.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.afriwark.Models.UserSignInSignUp.Login.UserLogin;
+import com.example.afriwark.Models.UserSignInSignUp.Login.SigninUser;
 import com.example.afriwark.R;
 import com.example.afriwark.Remote.ApiClient;
 import com.example.afriwark.Remote.ApiInterface;
@@ -67,10 +69,10 @@ public class SigninActivity extends AppCompatActivity {
     private void login() {
         final String email = edittextemail.getText().toString();
         String password = edittextpassword.getText().toString();
-        Call<UserLogin> call = apiInterface.signIn(email, password);
-        call.enqueue(new Callback<UserLogin>() {
+        Call<SigninUser> call = apiInterface.signIn(email, password);
+        call.enqueue(new Callback<SigninUser>() {
             @Override
-            public void onResponse(Call<UserLogin> call, Response<UserLogin> response) {
+            public void onResponse(Call<SigninUser> call, Response<SigninUser> response) {
                 if (response.body().getCode() == 0) {
                     int id = Integer.parseInt(response.body().getData().getUserId());
                     DBManager.setIntPrefs(getApplicationContext(), USER_ID, id);
@@ -85,7 +87,7 @@ public class SigninActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserLogin> call, Throwable t) {
+            public void onFailure(Call<SigninUser> call, Throwable t) {
                 Toast.makeText(SigninActivity.this, t.toString(), Toast.LENGTH_LONG).show();
             }
         });

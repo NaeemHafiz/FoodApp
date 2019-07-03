@@ -2,12 +2,17 @@ package com.example.afriwark.Activities;
 
 import android.app.Dialog;
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.afriwark.Models.Payment.Payment;
@@ -24,7 +29,7 @@ import static com.example.afriwark.UtilityClasses.Tags.USER_ID;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    private Button btnpayment, logout;
+    private Button logout;
     private Toolbar toolbar;
     private ApiInterface apiInterface;
 
@@ -32,7 +37,6 @@ public class PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        btnpayment = findViewById(R.id.payment);
         toolbar = findViewById(R.id.toolbarfinal);
         logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -48,13 +52,7 @@ public class PaymentActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        btnpayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getPayment();
-                showDialog();
-            }
-        });
+
     }
 
     public void showDialog() {
@@ -62,13 +60,7 @@ public class PaymentActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.alertdialoge);
-        Button dialogButton = dialog.findViewById(R.id.btndialog);
-        dialogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        dialog.setCancelable(true);
         dialog.show();
     }
 
@@ -87,5 +79,28 @@ public class PaymentActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.cashpayment:
+                if (checked) {
+                    getPayment();
+                    showDialog();
+                    Toast.makeText(PaymentActivity.this, "Cash Payment", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.onlinepayment:
+                if (checked)
+                    Toast.makeText(PaymentActivity.this, "online Payment", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.paypalpayment:
+                if (checked)
+                    Toast.makeText(PaymentActivity.this, "paypal Payment", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
     }
 }

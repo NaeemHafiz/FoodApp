@@ -62,7 +62,7 @@ public class CategoryDetailFragment extends Fragment {
                     int loginid = DBManager.getIntPrefs(getActivity(), USER_ID);
                     args.putInt("loginid", loginid);
                     args.putInt("category_id", cat_id);
-                    BasketFragment fragment = new BasketFragment();
+                    SubFragment fragment = new SubFragment();
                     fragment.setArguments(args);
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_container, fragment);

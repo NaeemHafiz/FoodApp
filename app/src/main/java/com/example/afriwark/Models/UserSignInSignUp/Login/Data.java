@@ -4,7 +4,7 @@ package com.example.afriwark.Models.UserSignInSignUp.Login;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataLogin {
+public class Data {
 
     @SerializedName("user_id")
     @Expose

@@ -1,16 +1,20 @@
 package com.example.afriwark.Activities;
 
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.afriwark.Models.UserSignInSignUp.Register.UserRegister;
+import com.example.afriwark.Models.UserSignInSignUp.Register.SignupUser;
 import com.example.afriwark.Remote.ApiClient;
 import com.example.afriwark.Remote.ApiInterface;
 import com.example.afriwark.UtilityClasses.DBManager;
@@ -127,10 +131,10 @@ public class SignupActivity extends AppCompatActivity {
         String cpassword = edittextcpassword.getText().toString();
         //
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<UserRegister> call = apiInterface.signUp(name, email, password, cpassword);
-        call.enqueue(new Callback<UserRegister>() {
+        Call<SignupUser> call = apiInterface.signUp(name, email, password, cpassword);
+        call.enqueue(new Callback<SignupUser>() {
             @Override
-            public void onResponse(Call<UserRegister> call, Response<UserRegister> response) {
+            public void onResponse(Call<SignupUser> call, Response<SignupUser> response) {
                 if (response.body().getCode() == 0) {
                     Toast.makeText(SignupActivity.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
                     int id = Integer.valueOf(response.body().getData().getUserId());
@@ -145,7 +149,7 @@ public class SignupActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserRegister> call, Throwable t) {
+            public void onFailure(Call<SignupUser> call, Throwable t) {
                 Toast.makeText(SignupActivity.this, t.toString(), Toast.LENGTH_LONG).show();
             }
         });

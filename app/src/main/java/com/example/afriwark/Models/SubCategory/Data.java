@@ -8,7 +8,7 @@ public class Data {
 
     @SerializedName("resturant_id")
     @Expose
-    private String resturantId;
+    private Integer resturantId;
     @SerializedName("resturant_name")
     @Expose
     private String resturantName;
@@ -31,11 +31,11 @@ public class Data {
     @Expose
     private CategoryInfo categoryInfo;
 
-    public String getResturantId() {
+    public Integer getResturantId() {
         return resturantId;
     }
 
-    public void setResturantId(String resturantId) {
+    public void setResturantId(Integer resturantId) {
         this.resturantId = resturantId;
     }
 

@@ -21,9 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:digits="0123456789,"
             android:drawableRight="@drawable/ic_search"
             android:hint="Search Restaurant"
+            android:inputType=""
             android:textColorHint="#fff" />
 
         <Button

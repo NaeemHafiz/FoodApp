@@ -1,10 +1,10 @@
 
-package com.example.afriwark.Models.UserSignInSignUp.Login;
+package com.example.afriwark.Models.UserSignInSignUp.Register;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserLogin {
+public class SignupUser {
 
     @SerializedName("code")
     @Expose
@@ -14,7 +14,7 @@ public class UserLogin {
     private String msg;
     @SerializedName("data")
     @Expose
-    private DataLogin data;
+    private Data data;
 
     public Integer getCode() {
         return code;
@@ -32,11 +32,11 @@ public class UserLogin {
         this.msg = msg;
     }
 
-    public DataLogin getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(DataLogin data) {
+    public void setData(Data data) {
         this.data = data;
     }
 

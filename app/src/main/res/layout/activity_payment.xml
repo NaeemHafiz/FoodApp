@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Activities.PaymentActivity">
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/toolbarfinal"
@@ -13,38 +11,64 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_below="@+id/toolbarfinal"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
             android:padding="10dp"
-            android:text="Select Payment"
+            android:text="Select Payment Method"
             android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/payment"
-            android:layout_width="match_parent"
+        <RadioGroup
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_background"
-            android:text="Cash Payment"
-            android:textColor="#fff" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="400dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/btn_background"
-            android:text="Logout"
-            android:textColor="#fff" />
+            <RadioButton
+                android:id="@+id/cashpayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:onClick="onRadioButtonClicked"
+                android:padding="10dp"
+                android:text="Cash Payment"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/onlinepayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:onClick="onRadioButtonClicked"
+                android:padding="10dp"
+                android:text="Online  Payment"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/paypalpayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:onClick="onRadioButtonClicked"
+                android:padding="10dp"
+                android:text="Paypal Payment"
+                android:textSize="18sp" />
+
+        </RadioGroup>
     </LinearLayout>
 
-
-</LinearLayout>
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/btn_background"
+        android:text="Logout"
+        android:textColor="#fff" />
+</RelativeLayout>

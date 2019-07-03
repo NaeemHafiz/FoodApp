@@ -1,10 +1,10 @@
 
-package com.example.afriwark.Models.SubCategory;
+package com.example.afriwark.Models.UserSignInSignUp.Login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Category {
+public class SigninUser {
 
     @SerializedName("code")
     @Expose

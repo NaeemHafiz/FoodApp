@@ -1,8 +1,11 @@
 package com.example.afriwark.Activities;
 
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
@@ -56,15 +59,6 @@ public class FindRestaurantActivity extends AppCompatActivity implements OnMapRe
         mapFragment.getMapAsync(FindRestaurantActivity.this);
     }
 
-    private void doSearch() {
-        coordinates = editTextsearch.getText().toString();
-        separated = coordinates.split(",");
-        LatLng TutorialsPoint = new LatLng(Double.parseDouble(separated[0]), Double.parseDouble(separated[1]));
-        mMap.addMarker(new
-                MarkerOptions().position(TutorialsPoint).title("Valencia Town"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(TutorialsPoint));
-    }
-
     private void initViews() {
         toolbar = findViewById(R.id.toolbarsearch);
         editTextsearch = toolbar.findViewById(R.id.rdittextlocation);
@@ -78,26 +72,54 @@ public class FindRestaurantActivity extends AppCompatActivity implements OnMapRe
         btnfindrestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                coordinates = editTextsearch.getText().toString();
-                separated = coordinates.split(",");
-                latitude = Double.parseDouble(separated[0]);
-                longitude = Double.parseDouble(separated[1]);
-                if (isValidate())
-                    findRestaurant();
+                final String search = editTextsearch.getText().toString();
+                if (search.length() == 0) {
+                    editTextsearch.setError("Please Enter Required DataRegister");
+                    editTextsearch.requestFocus();
+                } else if (search.matches("[a-zA-Z ]+")) {
+                    editTextsearch.setText("Please Enter Only Numbers");
+                    editTextsearch.requestFocus();
+                } else {
+                    coordinates = editTextsearch.getText().toString();
+                    separated = coordinates.split(",");
+                    latitude = Double.parseDouble(separated[0]);
+                    longitude = Double.parseDouble(separated[1]);
+                    if (isValidLatLng(latitude, longitude))
+                        findRestaurant();
+                }
             }
         });
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                coordinates = editTextsearch.getText().toString();
-                separated = coordinates.split(",");
-                latitude = Double.parseDouble(separated[0]);
-                longitude = Double.parseDouble(separated[1]);
-                if (isValidate())
-                    doSearch();
+                final String search = editTextsearch.getText().toString();
+                if (search.length() == 0) {
+                    editTextsearch.setError("Please Enter Required DataRegister");
+                    editTextsearch.requestFocus();
+                } else if (search.matches("[a-zA-Z ]+")) {
+                    editTextsearch.setText("Please Enter Only Numbers");
+                    editTextsearch.requestFocus();
+                } else {
+                    coordinates = editTextsearch.getText().toString();
+                    separated = coordinates.split(",");
+                    latitude = Double.parseDouble(separated[0]);
+                    longitude = Double.parseDouble(separated[1]);
+                    if (isValidLatLng(latitude, longitude))
+                        doSearch();
+                }
             }
         });
     }
+
+    private void doSearch() {
+        coordinates = editTextsearch.getText().toString();
+        separated = coordinates.split(",");
+        LatLng TutorialsPoint = new LatLng(Double.parseDouble(separated[0]), Double.parseDouble(separated[1]));
+        mMap.addMarker(new
+                MarkerOptions().position(TutorialsPoint).title("Valencia Town"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(TutorialsPoint));
+    }
+
 
     private void findRestaurant() {
         coordinates = editTextsearch.getText().toString();
@@ -129,14 +151,29 @@ public class FindRestaurantActivity extends AppCompatActivity implements OnMapRe
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
     }
 
-    private boolean isValidate() {
-        String search = editTextsearch.getText().toString();
-        if (search.equals("")) {
-            editTextsearch.setError("Please Enter Required DataRegister");
-            editTextsearch.requestFocus();
-            return false;
-        }
+//    private boolean isValidate() {
+//        final String search = editTextsearch.getText().toString();
+//        if (search.length() == 0) {
+//            editTextsearch.setError("Please Enter Required DataRegister");
+//            editTextsearch.requestFocus();
+//            return false;
+//        } else if (search.matches("[a-zA-Z ]+")) {
+//            editTextsearch.setText("Please Enter Only Numbers");
+//            editTextsearch.requestFocus();
+//            return false;
+//        }
+//        return true;
+//    }
 
-        return true;
+    public boolean isValidLatLng(double lat, double lng) {
+        if (lat < -90 || lat > 90) {
+            Toast.makeText(FindRestaurantActivity.this, "Please Enter Correct Value", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (lng < -180 || lng > 180) {
+            Toast.makeText(FindRestaurantActivity.this, "Please Enter Correct Value", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
     }
 }

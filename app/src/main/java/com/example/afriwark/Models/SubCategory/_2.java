@@ -8,10 +8,10 @@ public class _2 {
 
     @SerializedName("sub_category_id")
     @Expose
-    private String subCategoryId;
+    private Integer subCategoryId;
     @SerializedName("category_id")
     @Expose
-    private String categoryId;
+    private Integer categoryId;
     @SerializedName("sub_categories_name")
     @Expose
     private String subCategoriesName;
@@ -19,19 +19,19 @@ public class _2 {
     @Expose
     private String categoryName;
 
-    public String getSubCategoryId() {
+    public Integer getSubCategoryId() {
         return subCategoryId;
     }
 
-    public void setSubCategoryId(String subCategoryId) {
+    public void setSubCategoryId(Integer subCategoryId) {
         this.subCategoryId = subCategoryId;
     }
 
-    public String getCategoryId() {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 

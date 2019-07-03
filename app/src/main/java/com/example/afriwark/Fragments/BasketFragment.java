@@ -3,11 +3,13 @@ package com.example.afriwark.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +34,11 @@ import retrofit2.Response;
 public class BasketFragment extends Fragment {
 
     private Toolbar toolbar;
-    private EditText editTextcategory_id, editTextsubcategory_id, editTextqty, editTextprice, editTexttotal;
+    private EditText editTextqty, editTextprice, editTexttotal;
     private Button btnaddtobasket;
     private ApiInterface apiInterface;
     private int loginid;
+    int total;
 
     public BasketFragment() {
         // Required empty public constructor
@@ -48,8 +51,6 @@ public class BasketFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_basket, container, false);
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        editTextcategory_id = view.findViewById(R.id.category_id);
-        editTextsubcategory_id = view.findViewById(R.id.subcategory_id);
         editTextqty = view.findViewById(R.id.qty);
         editTextprice = view.findViewById(R.id.price);
         editTexttotal = view.findViewById(R.id.total);
@@ -63,8 +64,6 @@ public class BasketFragment extends Fragment {
         if (bundle != null) {
             loginid = bundle.getInt("loginid");
             Log.i("loginid", String.valueOf(bundle.getInt("loginid")));
-//            Log.i("category_id", String.valueOf(bundle.getInt("category_id")));
-            editTextcategory_id.setText(String.valueOf(bundle.getInt("category_id")));
             btnaddtobasket.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -77,13 +76,11 @@ public class BasketFragment extends Fragment {
     }
 
     private void addToBasket(int id) {
-        String cat_id = editTextcategory_id.getText().toString();
-        String subcat_id = editTextsubcategory_id.getText().toString();
-        String quantity = editTextqty.getText().toString();
-        String total = editTexttotal.getText().toString();
-        String price = editTextprice.getText().toString();
+        int price = Integer.parseInt(editTextprice.getText().toString());
+        int quantity = Integer.parseInt(editTextqty.getText().toString());
+        int total = Integer.parseInt(editTexttotal.getText().toString());
 
-        Call<AddToCart> cartCall = apiInterface.addToCart(cat_id, subcat_id, quantity, total, price, String.valueOf(id));
+        Call<AddToCart> cartCall = apiInterface.addToCart(quantity, total, price, String.valueOf(id));
         cartCall.enqueue(new Callback<AddToCart>() {
             @Override
             public void onResponse(Call<AddToCart> call, Response<AddToCart> response) {
@@ -102,22 +99,9 @@ public class BasketFragment extends Fragment {
     }
 
     private boolean isValidate() {
-        String cat_id = editTextcategory_id.getText().toString();
-        String subcat_id = editTextsubcategory_id.getText().toString();
         String quantity = editTextqty.getText().toString();
         String total = editTexttotal.getText().toString();
         String price = editTextprice.getText().toString();
-
-        if (cat_id.equals("")) {
-            editTextcategory_id.setError("Please Enter Category Id");
-            editTextcategory_id.requestFocus();
-            return false;
-        }
-        if (subcat_id.equals("")) {
-            editTextsubcategory_id.setError("Please Enter SubCategory ID");
-            editTextsubcategory_id.requestFocus();
-            return false;
-        }
         if (quantity.equals("")) {
             editTextqty.setError("Please Enter Quantity");
             editTextqty.requestFocus();
